@@ -103,6 +103,7 @@ export function EcgDashboard() {
   const [noticeType, setNoticeType] = useState<"info" | "success" | "danger">(
     "info",
   );
+  const [showEcgInstructions, setShowEcgInstructions] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -550,14 +551,10 @@ export function EcgDashboard() {
               type="button"
               variant="outline"
               className="w-fit gap-2 bg-card"
-              onClick={() =>
-                showNotice(
-                  "Place the monitor on your chest and follow the on-screen guide.",
-                )
-              }
+              onClick={() => setShowEcgInstructions((prev) => !prev)}
             >
               <CircleHelp data-icon="inline-start" />
-              How to take an ECG
+              {showEcgInstructions ? "Hide ECG guide" : "How to take an ECG"}
             </Button>
           </div>
           {notice && (
@@ -573,6 +570,190 @@ export function EcgDashboard() {
             >
               {notice}
             </div>
+          )}
+
+          {showEcgInstructions && (
+            <>
+              <div className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-sm" />
+              <div className="fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6">
+                <div className="mx-auto w-full max-w-6xl rounded-[2rem] border border-border bg-background shadow-2xl ring-1 ring-slate-900/10">
+                  <div className="flex flex-col gap-4 border-b border-border px-6 py-5 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h2 className="text-xl font-semibold">
+                        How to take an ECG
+                      </h2>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Follow these instructions to prepare, place leads,
+                        record, and avoid common issues.
+                      </p>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowEcgInstructions(false)}
+                    >
+                      Close
+                    </Button>
+                  </div>
+
+                  <div className="grid gap-6 px-6 py-6 lg:grid-cols-[1.2fr_0.8fr]">
+                    <div className="space-y-6">
+                      <section className="space-y-3 rounded-3xl border border-border bg-muted/60 p-5">
+                        <h3 className="text-sm font-semibold">
+                          1. Before starting
+                        </h3>
+                        <ul className="space-y-2 text-sm leading-6 text-muted-foreground list-disc list-inside">
+                          <li>Sit quietly for 5 minutes before recording.</li>
+                          <li>
+                            Avoid talking or moving during the ECG recording.
+                          </li>
+                          <li>
+                            Keep hands and skin dry before attaching electrodes.
+                          </li>
+                          <li>
+                            Remove excessive clothing around the chest area.
+                          </li>
+                          <li>
+                            Do not take the ECG immediately after exercise.
+                          </li>
+                        </ul>
+                      </section>
+
+                      <section className="space-y-3 rounded-3xl border border-border bg-muted/60 p-5">
+                        <h3 className="text-sm font-semibold">
+                          2. Taking the ECG
+                        </h3>
+                        <ul className="space-y-2 text-sm leading-6 text-muted-foreground list-disc list-inside">
+                          <li>
+                            Connect all leads firmly to the monitor and
+                            electrodes.
+                          </li>
+                          <li>
+                            Place the monitor correctly on your chest before
+                            starting.
+                          </li>
+                          <li>
+                            Stay still and relaxed while the device is
+                            recording.
+                          </li>
+                          <li>Start recording using the Start ECG button.</li>
+                          <li>
+                            Wait until the required recording duration is
+                            complete before stopping.
+                          </li>
+                        </ul>
+                      </section>
+
+                      <section className="space-y-3 rounded-3xl border border-border bg-muted/60 p-5">
+                        <h3 className="text-sm font-semibold">
+                          3. Common problems
+                        </h3>
+                        <ul className="space-y-2 text-sm leading-6 text-muted-foreground list-disc list-inside">
+                          <li>
+                            <strong>Poor signal / noisy ECG</strong> — stay
+                            still and relax your muscles.
+                          </li>
+                          <li>
+                            <strong>Lead off</strong> — check that each
+                            electrode has good skin contact.
+                          </li>
+                          <li>
+                            <strong>Flat or zero waveform</strong> — verify all
+                            lead connections.
+                          </li>
+                          <li>
+                            <strong>Baseline moving</strong> — avoid movement
+                            and keep cables secure.
+                          </li>
+                          <li>
+                            <strong>Interference</strong> — move away from
+                            chargers or electrical equipment.
+                          </li>
+                          <li>
+                            <strong>Dry skin</strong> — clean or wipe the skin
+                            and reattach the electrode.
+                          </li>
+                          <li>
+                            Excessive hair may prevent good contact; press
+                            electrodes gently for a better seal.
+                          </li>
+                        </ul>
+                      </section>
+
+                      <section className="rounded-3xl border border-border bg-rose-50 p-5">
+                        <h3 className="text-sm font-semibold text-rose-700">
+                          4. Safety notice
+                        </h3>
+                        <p className="mt-3 text-sm leading-6 text-rose-700">
+                          This device is for ECG recording and monitoring only
+                          and does not replace medical diagnosis.
+                        </p>
+                        <p className="mt-3 text-sm leading-6 text-rose-700">
+                          If someone has severe chest pain, severe breathing
+                          difficulty, fainting, or other emergency symptoms,
+                          seek emergency medical care instead of relying only on
+                          this app.
+                        </p>
+                      </section>
+                    </div>
+
+                    <div className="space-y-6">
+                      <section className="rounded-3xl border border-border bg-muted/60 p-5">
+                        <h3 className="text-sm font-semibold">
+                          2. Lead placement
+                        </h3>
+                        <div className="mt-4 grid gap-4">
+                          <div className="grid gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <div className="text-sm font-medium text-slate-900">
+                              Lead diagram
+                            </div>
+                            <div className="relative mx-auto h-[340px] w-full max-w-[320px] rounded-[2.5rem] border border-slate-200 bg-slate-50 px-4 py-6">
+                              <div className="absolute left-1/2 top-6 h-12 w-16 -translate-x-1/2 rounded-full border border-slate-300 bg-slate-100" />
+                              <div className="absolute left-1/2 top-28 h-20 w-24 -translate-x-1/2 rounded-full border border-slate-300 bg-slate-100" />
+                              <div className="absolute left-1/2 top-56 h-10 w-10 -translate-x-1/2 rounded-full border border-slate-300 bg-slate-100" />
+                              <div className="absolute left-[60%] top-40 h-10 w-10 rounded-full bg-red-500 shadow-lg" />
+                              <div className="absolute left-[35%] top-50 h-10 w-10 rounded-full bg-yellow-400 shadow-lg" />
+                              <div className="absolute left-[62%] top-62 h-10 w-10 rounded-full bg-emerald-500 shadow-lg" />
+                              <div className="absolute left-[18%] top-34 h-10 w-10 rounded-full bg-red-500 shadow-lg" />
+                              <div className="absolute left-[25%] top-62 h-10 w-10 rounded-full bg-yellow-400 shadow-lg" />
+                            </div>
+                          </div>
+
+                          <div className="space-y-3 rounded-3xl border border-border bg-white p-4">
+                            <div className="flex items-center gap-2 text-sm font-semibold">
+                              <span className="h-3 w-3 rounded-full bg-red-500" />
+                              <span>Red</span>
+                            </div>
+                            <p className="text-sm leading-6 text-muted-foreground">
+                              Right upper chest lead.
+                            </p>
+                            <div className="flex items-center gap-2 text-sm font-semibold">
+                              <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                              <span>Yellow</span>
+                            </div>
+                            <p className="text-sm leading-6 text-muted-foreground">
+                              Left upper chest lead.
+                            </p>
+                            <div className="flex items-center gap-2 text-sm font-semibold">
+                              <span className="h-3 w-3 rounded-full bg-emerald-500" />
+                              <span>Green</span>
+                            </div>
+                            <p className="text-sm leading-6 text-muted-foreground">
+                              Lower left ground / reference lead.
+                            </p>
+                            <p className="pt-3 text-xs leading-5 text-muted-foreground">
+                              Electrodes should have good skin contact and be
+                              placed on clean, dry skin.
+                            </p>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
           {isHome ? (

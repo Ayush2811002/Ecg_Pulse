@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" fill="none">
+  <defs>
+    <style>
+      .outline { fill:none; stroke:#111827; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
+      .heart { fill:#ef4444; }
+      .dot-red { fill:#dc2626; }
+      .dot-yellow { fill:#f59e0b; }
+      .dot-green { fill:#16a34a; }
+      .body-bg { fill:#ffffff; }
+      .shadow { filter:url(#shadow); }
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="620" height="420" rx="32" fill="#f8fafc" />
+  <g class="shadow">
+    <path class="outline" d="M128 60c0-18 16-34 36-34h0c20 0 36 16 36 34v16c0 18-16 34-36 34h0c-20 0-36-16-36-34v-16Z" />
+    <path class="outline" d="M144 96c0 16 20 28 44 28s44-12 44-28" />
+    <path class="outline" d="M108 120c0 28 10 50 24 52s44-8 76-8 60 12 70 8 24-24 24-52" />
+    <path class="outline" d="M136 172c-28 28-28 80-28 108v68c0 24 6 62 24 72s60 14 88 14 66-2 84-14 24-48 24-72v-68c0-28 0-80-28-108" />
+    <path class="outline" d="M128 220c-30 10-42 70-42 70s24 38 46 42" />
+    <path class="outline" d="M216 220c30 10 42 70 42 70s-24 38-46 42" />
+    <path class="outline" d="M70 190c18-10 34-8 44 0" />
+    <path class="outline" d="M226 190c-18-10-34-8-44 0" />
+  </g>
+  <g class="shadow" transform="translate(310 0)">
+    <path class="outline" d="M128 60c0-18 16-34 36-34h0c20 0 36 16 36 34v16c0 18-16 34-36 34h0c-20 0-36-16-36-34v-16Z" />
+    <path class="outline" d="M144 96c0 16 20 28 44 28s44-12 44-28" />
+    <path class="outline" d="M108 120c0 28 10 50 24 52s44-8 76-8 60 12 70 8 24-24 24-52" />
+    <path class="outline" d="M136 172c-28 28-28 80-28 108v68c0 24 6 62 24 72s60 14 88 14 66-2 84-14 24-48 24-72v-68c0-28 0-80-28-108" />
+    <path class="outline" d="M128 220c-30 10-42 70-42 70s24 38 46 42" />
+    <path class="outline" d="M216 220c30 10 42 70 42 70s-24 38-46 42" />
+    <path class="outline" d="M70 190c18-10 34-8 44 0" />
+    <path class="outline" d="M226 190c-18-10-34-8-44 0" />
+  </g>
+  <g>
+    <path class="heart" d="M150 162c-14-16-38-16-52 0-14 16-14 42 0 58 14 16 38 16 52 0 14-16 14-42 0-58Z" />
+    <path class="heart" d="M434 162c-14-16-38-16-52 0-14 16-14 42 0 58 14 16 38 16 52 0 14-16 14-42 0-58Z" />
+    <circle class="dot-red" cx="84" cy="186" r="18" />
+    <circle class="dot-yellow" cx="90" cy="264" r="18" />
+    <circle class="dot-green" cx="150" cy="212" r="18" />
+    <circle class="dot-red" cx="389" cy="166" r="18" />
+    <circle class="dot-yellow" cx="392" cy="236" r="18" />
+    <circle class="dot-green" cx="444" cy="154" r="18" />
+  </g>
+</svg>
